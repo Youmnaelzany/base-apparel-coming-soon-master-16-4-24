@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "@/styles/globals.css";
+---
+
+<Layout title="Frontend Mentor | Base Apparel coming soon page">
+  <main class="grid grid-cols-1 lg:grid-cols-2 lg:gap-6">
+    <section class="grid grid-cols-1">
+      <div class="mb-8 ml-8 mt-[1.94rem] lg:ml-[10.31rem] lg:mt-[4.68rem]">
+        <img src="/images/logo.svg" alt="logo" class="" />
+      </div>
+      <div
+        class="mx-8 mb-[5.75rem] mr-[13.75rem] mt-16 flex w-[19.4375rem] flex-col text-center lg:ml-[10.31rem] lg:w-[27.75rem] lg:text-left"
+      >
+        <h1
+          class="text-[2.5rem] font-normal leading-[2.625rem] tracking-[0.67656rem] text-[#CE9898] lg:text-[4rem] lg:leading-[4rem] lg:tracking-[1.08256rem]"
+        >
+          WE'RE
+        </h1>
+        <h2
+          class="mb-4 text-[2.5rem] font-normal leading-[2.625rem] tracking-[0.67656rem] text-[#423A3A] lg:mb-8 lg:text-[4rem] lg:leading-[4rem] lg:tracking-[1.08256rem]"
+        >
+          COMING SOON
+        </h2>
+        <p
+          class="mb-8 text-sm font-normal leading-snug text-[#CE9898] lg:mb-10 lg:text-base lg:leading-7"
+        >
+          Hello fellow shoppers! We're currently building our new fashion store.
+          Add your email below to stay up-to-date with announcements and our
+          launch deals.
+        </p>
+        <form action=" " class="relative">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email Address"
+            class="relative h-12 w-[19.4375rem] rounded-[1.75rem] border border-solid border-[#CE9898] bg-[#fff8f8] pl-8 font-normal leading-[1.75rem] text-[#423A3A] outline-none placeholder:text-base placeholder:font-normal placeholder:leading-[1.75rem] placeholder:text-[#CE9898] placeholder:opacity-50 lg:h-14 lg:w-[27.8125rem]"
+          />
+          <img
+            src="/images/icon-error.svg"
+            alt=""
+            class="absolute right-32 top-4 hidden"
+            id="errorIcon"
+          />
+          <button
+            type="submit"
+            class="absolute right-0 top-0 flex h-12 w-16 cursor-pointer items-center justify-center rounded-[1.75rem] bg-[#f5cbcb] transition-colors duration-500 ease-in-out hover:bg-[#f4cdcd] lg:h-14 lg:w-[6.25rem]"
+          >
+            <img src="/images/icon-arrow.svg" alt="" class="" />
+          </button>
+        </form>
+        <!-- Error Msg -->
+        <h3
+          class="ml-8 mt-2 hidden text-sm font-normal leading-[1.75rem] text-[#F96464]"
+        >
+          Please provide a valid email
+        </h3>
+      </div>
+    </section>
+    <section class="">
+      <picture>
+        <source media="(min-width:768px )" srcset="/images/hero-desktop.jpg" />
+        <img src="/images/hero-mobile.jpg" alt="hero" class="" />
+      </picture>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  body {
+    background: linear-gradient(150deg, #fff 0%, #fff4f4 84.51%);
+  }
+</style>
+
+<script is:inline>
+  const email = document.getElementById("email");
+  const errorMsg = document.querySelector("h3");
+  const errorIcon = document.getElementById("errorIcon");
+  const submitBtn = document.querySelector("button");
+  const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  submitBtn.addEventListener("click", (event) => {
+    if (email.value.match(pattern)) {
+      errorMsg.style.display = "none";
+      email.style.border = "none";
+    } else {
+      errorMsg.style.display = "block";
+      errorIcon.style.display = "block";
+      email.style.border = "2px solid #F96464";
+    }
+  });
+</script>
